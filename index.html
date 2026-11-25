@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Latihan OSN IPA SMP 2026</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">🔬</div>
+        <div>
+          <h1 class="brand-title">Lab Latihan OSN IPA SMP 2026</h1>
+          <p class="brand-sub">Persiapan Cerdas Kelas 9 • Penyisihan 1, Penyisihan 2 &amp; Final Nasional</p>
+        </div>
+      </div>
+      <nav class="nav-tabs" aria-label="Navigasi Utama">
+        <button class="nav-btn active" data-tab="beranda">🏠 Beranda &amp; Kisi-Kisi</button>
+        <button class="nav-btn" data-tab="latihan">📘 Mode Latihan</button>
+        <button class="nav-btn" data-tab="challenge">🏆 Mode Challenge</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- TAB 1: BERANDA & KISI-KISI -->
+    <section id="tab-beranda" class="tab-panel active">
+      <div class="hero-card">
+        <div class="hero-text">
+          <span class="pill pill-teal">Silabus OSN SMP 2026 • IPA</span>
+          <h2>Siap Menaklukkan OSN IPA SMP 2026?</h2>
+          <p>
+            Platform latihan interaktif ini disusun dari soal asli OSN IPA SMP tahun <strong>2021–2024</strong>
+            yang dipetakan langsung ke <strong>19 topik Kisi-Kisi OSN 2026</strong>. Pilih <strong>Mode Latihan</strong>
+            untuk belajar bertahap dengan pembahasan langsung di tiap soal, atau uji nyali di <strong>Mode Challenge</strong>
+            dengan pembahasan di akhir sesi!
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="switchTab('latihan')">Mulai Latihan Sekarang</button>
+            <button class="btn btn-outline" onclick="switchTab('challenge')">Coba Simulasi Challenge</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <span class="stat-num" id="stat-total-soal">46</span>
+            <span class="stat-label">Soal Terkurasi &amp; Bergambar</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">19</span>
+            <span class="stat-label">Topik Kisi-Kisi 2026</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="stat-latihan-done">0</span>
+            <span class="stat-label">Soal Latihan Selesai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h3>Peta Relevansi Kisi-Kisi OSN IPA SMP 2026</h3>
+          <p class="muted">Pemetaan 19 topik Silabus 2026 terhadap arsip soal OSN tahun 2021–2024.</p>
+        </div>
+        <div class="filter-group">
+          <button class="chip active" data-kisi-filter="all">Semua (19)</button>
+          <button class="chip" data-kisi-filter="umum">Penyisihan &amp; Final (17)</button>
+          <button class="chip" data-kisi-filter="final">Khusus Final *) (2)</button>
+        </div>
+      </div>
+
+      <div id="kisi-grid" class="kisi-grid"></div>
+    </section>
+
+    <!-- TAB 2: MODE LATIHAN -->
+    <section id="tab-latihan" class="tab-panel">
+      <div class="mode-banner">
+        <div>
+          <span class="pill pill-blue">Mode Latihan Interaktif</span>
+          <h2>Pembahasan Langsung di Setiap Butir Soal</h2>
+          <p class="muted">Pilih jawabanmu, lalu lihat kunci jawaban dan pembahasan lengkapnya seketika.</p>
+        </div>
+        <div class="level-selector" role="group" aria-label="Pilih Tingkatan Latihan">
+          <button class="level-btn active" data-latihan-level="penyisihan1">Penyisihan 1 (OSN-K)</button>
+          <button class="level-btn" data-latihan-level="penyisihan2">Penyisihan 2 (OSN-P)</button>
+          <button class="level-btn" data-latihan-level="nasional">Final Nasional</button>
+        </div>
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-info">
+          <span id="latihan-progress-text">Terjawab: 0 / 0 soal</span>
+          <button class="btn-link" id="reset-latihan-btn">Reset Progres Level Ini</button>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="latihan-progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div id="latihan-list" class="question-list"></div>
+    </section>
+
+    <!-- TAB 3: MODE CHALLENGE -->
+    <section id="tab-challenge" class="tab-panel">
+      <div id="challenge-lobby" class="challenge-lobby">
+        <div class="mode-banner">
+          <div>
+            <span class="pill pill-amber">Mode Challenge • Simulasi Sesi</span>
+            <h2>Uji Kemampuan Tanpa Bocoran Jawaban</h2>
+            <p class="muted">
+              Kerjakan seluruh soal dalam satu sesi terlebih dahulu. Kunci jawaban dan pembahasan lengkap
+              akan terbuka setelah kamu menyelesaikan seluruh sesi challenge!
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-cards">
+          <div class="ch-card">
+            <span class="pill pill-teal">Level 1</span>
+            <h3>Challenge Penyisihan 1 (OSN-K)</h3>
+            <p class="muted">8 soal pilihan ganda HOTS lintas Fisika, Biologi &amp; IPBA beserta gambar.</p>
+            <p class="ch-meta">⏱️ Estimasi: 15 menit</p>
+            <button class="btn btn-primary full-w" onclick="startChallenge('penyisihan1')">Mulai Challenge 1</button>
+          </div>
+
+          <div class="ch-card">
+            <span class="pill pill-blue">Level 2</span>
+            <h3>Challenge Penyisihan 2 (OSN-P)</h3>
+            <p class="muted">6 soal analisis grafik, hitungan fisika &amp; fisiologi tingkat Provinsi.</p>
+            <p class="ch-meta">⏱️ Estimasi: 15 menit</p>
+            <button class="btn btn-primary full-w" onclick="startChallenge('penyisihan2')">Mulai Challenge 2</button>
+          </div>
+
+          <div class="ch-card ch-card-final">
+            <span class="pill pill-rose">Level 3 • Khusus Final</span>
+            <h3>Challenge Final Nasional</h3>
+            <p class="muted">6 soal tingkat Nasional mencakup Teori HOTS, Eksperimen*) &amp; Forensik*).</p>
+            <p class="ch-meta">⏱️ Estimasi: 20 menit</p>
+            <button class="btn btn-primary full-w" onclick="startChallenge('nasional')">Mulai Challenge 3</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="challenge-runner" class="challenge-runner hidden">
+        <div class="runner-header">
+          <div>
+            <span class="pill pill-amber" id="ch-level-badge">Challenge</span>
+            <h3 id="ch-question-counter">Soal 1 dari 8</h3>
+          </div>
+          <div class="runner-right">
+            <div class="timer-badge" id="ch-timer">⏱️ 00:00</div>
+            <button class="btn btn-outline btn-sm" onclick="exitChallenge()">Keluar Sesi</button>
+          </div>
+        </div>
+
+        <div class="nav-pills" id="ch-nav-pills"></div>
+        <div id="ch-question-stage"></div>
+
+        <div class="runner-footer">
+          <button class="btn btn-outline" id="ch-prev-btn" onclick="prevChallengeQ()">← Sebelumnya</button>
+          <div class="runner-footer-right">
+            <button class="btn btn-outline" id="ch-next-btn" onclick="nextChallengeQ()">Berikutnya →</button>
+            <button class="btn btn-success" id="ch-finish-btn" onclick="finishChallenge()">Selesai &amp; Lihat Pembahasan</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="challenge-result" class="challenge-result hidden"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Lab Latihan OSN IPA SMP 2026 • Berbasis Silabus OSN SMP 2026 (Puspresnas) &amp; Bank Soal 2021–2024</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
